@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Retro Square Glasses - Vintage square glasses with high-quality acetate frames">
+  <title>Retro Square Glasses | Glasses Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2a2a72;
+      --secondary: #ff9f1c;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #e0e0e0;
+      --border-radius: 8px;
+      --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Navigation */
+    .navbar {
+      background: var(--dark);
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+    
+    .cart-count {
+      background: var(--secondary);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      margin-left: 5px;
+    }
+    
+    /* Product Container */
+    .product-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    /* Product Gallery */
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1rem;
+    }
+    
+    .thumbnail-container {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    
+    .thumbnail:hover, .thumbnail.active {
+      border-color: var(--primary);
+    }
+    
+    /* Product Details */
+    .product-details {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .product-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .stars {
+      color: var(--secondary);
+    }
+    
+    .review-count {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .product-description {
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+    
+    .product-features {
+      margin-bottom: 2rem;
+    }
+    
+    .feature-list {
+      list-style: none;
+    }
+    
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .feature-list li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+    
+    /* Color Options */
+    .color-options {
+      margin-bottom: 1.5rem;
+    }
+    
+    .color-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .colors {
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    .color {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    
+    .color:hover, .color.selected {
+      border-color: var(--dark);
+    }
+    
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      flex: 1;
+    }
+    
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(42,42,114,0.3);
+    }
+    
+    /* Product Meta */
+    .product-meta {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .product-meta div {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .product-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .thumbnail-container {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      .product-title {
+        font-size: 1.5rem;
+      }
+      
+      .product-price {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+  <script>
+    function addToCart() {
+      const id = "retro-square-glasses";
+      const name = "Retro Square Glasses";
+      const price = "$35.00";
+      const image = "https://img.joomcdn.net/17374e4b4159daaa03c4f0e0f93f2e14b383c230_400_400.jpeg";
+      const color = document.querySelector('.color.selected')?.title || "Black";
+
+      let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+      const existingItemIndex = cart.findIndex(item => item.id === id && item.color === color);
+      
+      if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity += 1;
+      } else {
+        cart.push({ 
+          id, 
+          name, 
+          price, 
+          image, 
+          color,
+          quantity: 1 
+        });
+      }
+
+      localStorage.setItem("cartItems", JSON.stringify(cart));
+      updateCartCount();
+      
+      const goToCart = confirm(`${name} (${color}) added to cart!\nDo you want to go to cart now?`);
+      if (goToCart) {
+        window.location.href = "https://fam77777.github.io/cart.com/";
+      }
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      
+      // Initialize color selection
+      document.querySelector('.color').classList.add('selected');
+      
+      // Set up thumbnail click events
+      document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.addEventListener('click', function() {
+          document.querySelectorAll('.thumbnail').forEach(img => img.classList.remove('active'));
+          this.classList.add('active');
+          document.querySelector('.main-image').src = this.src;
+        });
+      });
+      
+      // Set up color selection
+      document.querySelectorAll('.color').forEach(color => {
+        color.addEventListener('click', function() {
+          document.querySelectorAll('.color').forEach(c => c.classList.remove('selected'));
+          this.classList.add('selected');
+        });
+      });
+    });
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+      const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="https://bcassetcdn.com/social/m2hivhgvug/preview.png" class="logo">Glasses<span>Team</span></a>
+    <div class="nav-links">
+      <a href="https://fam77777.github.io/glasses_shop1.com/"><i class="fas fa-store"></i> Shop</a>
+      <a href="https://fam77777.github.io/cart.com/"><i class="fas fa-shopping-cart"></i> Cart <span class="cart-count" id="cartCount">0</span></a>
+    </div>
+  </nav>
+
+  <!-- Product Container -->
+  <div class="product-container">
+    <!-- Product Gallery -->
+    <div class="product-gallery">
+      <img src="https://img.joomcdn.net/17374e4b4159daaa03c4f0e0f93f2e14b383c230_400_400.jpeg" alt="Retro Square Glasses" class="main-image">
+      <div class="thumbnail-container">
+        <img src="https://img.joomcdn.net/17374e4b4159daaa03c4f0e0f93f2e14b383c230_400_400.jpeg" alt="Retro Square Glasses - Front View" class="thumbnail active">
+        <img src="https://img.joomcdn.net/27374e4b4159daaa03c4f0e0f93f2e14b383c230_400_400.jpeg" alt="Retro Square Glasses - Side View" class="thumbnail">
+        <img src="https://img.joomcdn.net/37374e4b4159daaa03c4f0e0f93f2e14b383c230_400_400.jpeg" alt="Retro Square Glasses - On Face" class="thumbnail">
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+      <h1 class="product-title">Retro Square Glasses</h1>
+      <div class="product-price">$35.00</div>
+      
+      <div class="product-rating">
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <span class="review-count">(142 reviews)</span>
+      </div>
+      
+      <p class="product-description">
+        These Retro Square Glasses are a statement piece for fashion lovers. With bold square frames and classic design,
+        they bring back vintage vibes with a modern twist. Built with durable hinges and a lightweight feel.
+      </p>
+      
+      <div class="product-features">
+        <h3>Key Features:</h3>
+        <ul class="feature-list">
+          <li>High-quality acetate square frames</li>
+          <li>Scratch-resistant lenses with UV protection</li>
+          <li>Vintage style suitable for all face shapes</li>
+          <li>Spring hinges for durability and comfort</li>
+          <li>Lightweight design for all-day wear</li>
+          <li>Includes premium microfiber cleaning cloth</li>
+        </ul>
+      </div>
+      
+      <!-- Color Options -->
+      <div class="color-options">
+        <h3 class="color-title">Frame Colors:</h3>
+        <div class="colors">
+          <div class="color selected" style="background: #1a1a2e;" title="Black" onclick="selectColor(this)"></div>
+          <div class="color" style="background: #6b4423;" title="Tortoise" onclick="selectColor(this)"></div>
+          <div class="color" style="background: #964b00;" title="Brown" onclick="selectColor(this)"></div>
+          <div class="color" style="background: #2a2a72;" title="Navy Blue" onclick="selectColor(this)"></div>
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="addToCart()">
+          <i class="fas fa-shopping-cart"></i> Add to Cart
+        </button>
+      </div>
+      
+      <!-- Product Meta -->
+      <div class="product-meta">
+        <div><i class="fas fa-box"></i> Free shipping on orders over $50</div>
+        <div><i class="fas fa-undo"></i> 30-day easy returns</div>
+        <div><i class="fas fa-shield-alt"></i> 1-year warranty</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Helper function for color selection
+    function selectColor(colorElement) {
+      document.querySelectorAll('.color').forEach(c => c.classList.remove('selected'));
+      colorElement.classList.add('selected');
+    }
+  </script>
+</body>
+</html>
